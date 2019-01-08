@@ -1,0 +1,22 @@
+{
+    "name": "SourceType",
+    "fields": [
+        {
+            "fieldName": "sourceType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190108183436",
+    "entityTableName": "source_type",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

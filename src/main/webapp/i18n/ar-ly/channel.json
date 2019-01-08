@@ -1,0 +1,10 @@
+{
+    "notificationApp": {
+        "Channel": {
+            "null": "",
+            "EMAIL": "EMAIL",
+            "SMS": "SMS",
+            "SYSTEM": "SYSTEM"
+        }
+    }
+}
