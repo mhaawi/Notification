@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity NotificationDefination.
+    -->
+    <changeSet id="20190108174336-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="notification_definations_id"
+                                 baseTableName="notification_defination_"
+                                 constraintName="fk_notification_defination__notification_definations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification_defination"/>
+        <addForeignKeyConstraint baseColumnNames="_id"
+                                 baseTableName="notification_defination_"
+                                 constraintName="fk_notification_defination___id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="application"/>
+        
+        <addForeignKeyConstraint baseColumnNames="notification_definations_id"
+                                 baseTableName="notification_defination_"
+                                 constraintName="fk_notification_defination__notification_definations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="notification_defination"/>
+        <addForeignKeyConstraint baseColumnNames="_id"
+                                 baseTableName="notification_defination_"
+                                 constraintName="fk_notification_defination___id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="api"/>
+        
+    </changeSet>
+</databaseChangeLog>
