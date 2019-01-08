@@ -1,0 +1,9 @@
+{
+    "notificationApp": {
+        "ApiType": {
+            "null": "",
+            "GET": "GET",
+            "POST": "POST"
+        }
+    }
+}
