@@ -1,0 +1,65 @@
+{
+    "name": "NotificationDefination",
+    "fields": [
+        {
+            "fieldName": "notificationKey",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "channelName",
+            "fieldType": "Channel",
+            "fieldValues": "EMAIL,SMS,SYSTEM",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "templatePath",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "sourceType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "application",
+            "otherEntityName": "application",
+            "otherEntityField": "applicationName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "apiDefination",
+            "otherEntityName": "apiDefination",
+            "otherEntityField": "apiKey",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190111194251",
+    "entityTableName": "notification_defination",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
