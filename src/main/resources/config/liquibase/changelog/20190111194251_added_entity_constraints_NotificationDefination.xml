@@ -29,6 +29,10 @@
                                  constraintName="fk_notification_defination_api_defination_api_definations_id"
                                  referencedColumnNames="id"
                                  referencedTableName="api"/>
-        
+
+        <addUniqueConstraint deferrable="true" constraintName="notification_defination_inique"
+                             tableName="notification_defination" columnNames="notification_key, channel_name"/>
+
+
     </changeSet>
 </databaseChangeLog>

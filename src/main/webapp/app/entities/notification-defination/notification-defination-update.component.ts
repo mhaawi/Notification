@@ -10,6 +10,8 @@ import { IApplication } from 'app/shared/model/application.model';
 import { ApplicationService } from 'app/entities/application';
 import { IApiDefination } from 'app/shared/model/api-defination.model';
 import { ApiDefinationService } from 'app/entities/api-defination';
+import { SourceTypeService } from 'app/entities/source-type';
+import { ISourceType } from 'app/shared/model/source-type.model';
 
 @Component({
     selector: 'jhi-notification-defination-update',
@@ -20,15 +22,15 @@ export class NotificationDefinationUpdateComponent implements OnInit {
     isSaving: boolean;
 
     applications: IApplication[];
-
     apidefinations: IApiDefination[];
-
+    sourcTypes: ISourceType[];
     constructor(
         protected jhiAlertService: JhiAlertService,
         protected notificationDefinationService: NotificationDefinationService,
         protected applicationService: ApplicationService,
         protected apiDefinationService: ApiDefinationService,
-        protected activatedRoute: ActivatedRoute
+        protected activatedRoute: ActivatedRoute,
+        protected surceTypeService: SourceTypeService
     ) {}
 
     ngOnInit() {
@@ -45,6 +47,13 @@ export class NotificationDefinationUpdateComponent implements OnInit {
         this.apiDefinationService.query().subscribe(
             (res: HttpResponse<IApiDefination[]>) => {
                 this.apidefinations = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+
+        this.surceTypeService.query().subscribe(
+            (res: HttpResponse<ISourceType[]>) => {
+                this.sourcTypes = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
