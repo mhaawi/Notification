@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="notificationApp.systemNotification.home.title">System Notifications</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-system-notification" [routerLink]="['/system-notification/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="notificationApp.systemNotification.home.createLabel">
+            Create new System Notification
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="systemNotifications">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="content"><span jhiTranslate="notificationApp.systemNotification.content">Content</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span jhiTranslate="notificationApp.systemNotification.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sendDate"><span jhiTranslate="notificationApp.systemNotification.sendDate">Send Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sourceId"><span jhiTranslate="notificationApp.systemNotification.sourceId">Source Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sourceType"><span jhiTranslate="notificationApp.systemNotification.sourceType">Source Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sourceName"><span jhiTranslate="notificationApp.systemNotification.sourceName">Source Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="applicationKey"><span jhiTranslate="notificationApp.systemNotification.applicationKey">Application Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="error"><span jhiTranslate="notificationApp.systemNotification.error">Error</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="errorShortName"><span jhiTranslate="notificationApp.systemNotification.errorShortName">Error Short Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="errorDate"><span jhiTranslate="notificationApp.systemNotification.errorDate">Error Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deleted"><span jhiTranslate="notificationApp.systemNotification.deleted">Deleted</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deletedDate"><span jhiTranslate="notificationApp.systemNotification.deletedDate">Deleted Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let systemNotification of systemNotifications ;trackBy: trackId">
+                <td><a [routerLink]="['/system-notification', systemNotification.id, 'view' ]">{{systemNotification.id}}</a></td>
+                <td>{{systemNotification.content}}</td>
+                <td jhiTranslate="{{'notificationApp.StatusType.' + systemNotification.status}}">{{systemNotification.status}}</td>
+                <td>{{systemNotification.sendDate | date:'medium'}}</td>
+                <td>{{systemNotification.sourceId}}</td>
+                <td>{{systemNotification.sourceType}}</td>
+                <td>{{systemNotification.sourceName}}</td>
+                <td>{{systemNotification.applicationKey}}</td>
+                <td>{{systemNotification.error}}</td>
+                <td>{{systemNotification.errorShortName}}</td>
+                <td>{{systemNotification.errorDate | date:'medium'}}</td>
+                <td>{{systemNotification.deleted}}</td>
+                <td>{{systemNotification.deletedDate | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/system-notification', systemNotification.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/system-notification', systemNotification.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'system-notification', { outlets: { popup: systemNotification.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="systemNotifications && systemNotifications.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

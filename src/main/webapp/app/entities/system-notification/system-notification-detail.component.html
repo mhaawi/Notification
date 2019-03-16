@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="systemNotification">
+            <h2><span jhiTranslate="notificationApp.systemNotification.detail.title">System Notification</span> {{systemNotification.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="notificationApp.systemNotification.content">Content</span></dt>
+                <dd>
+                    <span>{{systemNotification.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'notificationApp.StatusType.' + systemNotification.status}}">{{systemNotification.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.sendDate">Send Date</span></dt>
+                <dd>
+                    <span>{{systemNotification.sendDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.sourceId">Source Id</span></dt>
+                <dd>
+                    <span>{{systemNotification.sourceId}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.sourceType">Source Type</span></dt>
+                <dd>
+                    <span>{{systemNotification.sourceType}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.sourceName">Source Name</span></dt>
+                <dd>
+                    <span>{{systemNotification.sourceName}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.applicationKey">Application Key</span></dt>
+                <dd>
+                    <span>{{systemNotification.applicationKey}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.error">Error</span></dt>
+                <dd>
+                    <span>{{systemNotification.error}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.errorShortName">Error Short Name</span></dt>
+                <dd>
+                    <span>{{systemNotification.errorShortName}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.errorDate">Error Date</span></dt>
+                <dd>
+                    <span>{{systemNotification.errorDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.deleted">Deleted</span></dt>
+                <dd>
+                    <span>{{systemNotification.deleted}}</span>
+                </dd>
+                <dt><span jhiTranslate="notificationApp.systemNotification.deletedDate">Deleted Date</span></dt>
+                <dd>
+                    <span>{{systemNotification.deletedDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/system-notification', systemNotification.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
