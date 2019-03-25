@@ -1,0 +1,32 @@
+{
+    "notificationApp": {
+        "systemNotification": {
+            "home": {
+                "title": "System Notifications",
+                "createLabel": "Create a new System Notification",
+                "createOrEditLabel": "Create or edit a System Notification"
+            },
+            "created": "A new System Notification is created with identifier {{ param }}",
+            "updated": "A System Notification is updated with identifier {{ param }}",
+            "deleted": "A System Notification is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete System Notification {{ id }}?"
+            },
+            "detail": {
+                "title": "System Notification"
+            },
+            "content": "Content",
+            "status": "Status",
+            "sendDate": "Send Date",
+            "sourceId": "Source Id",
+            "sourceType": "Source Type",
+            "sourceName": "Source Name",
+            "applicationKey": "Application Key",
+            "error": "Error",
+            "errorShortName": "Error Short Name",
+            "errorDate": "Error Date",
+            "deleted": "Deleted",
+            "deletedDate": "Deleted Date"
+        }
+    }
+}

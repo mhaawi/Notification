@@ -1,0 +1,39 @@
+
+
+
+entity SystemNotification  (system_notification) {
+    content String required 
+    status StatusType required
+    sendDate ZonedDateTime
+    sourceId String
+    sourceType String
+    sourceName String
+    applicationKey String
+    error String
+    errorShortName String
+    errorDate ZonedDateTime
+    deleted Boolean
+    deletedDate ZonedDateTime
+}
+
+
+//////enums /////
+enum StatusType{
+	READ, UN_READ , NEW    
+}
+
+
+
+
+////////////////////////////
+paginate SystemNotification with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+// Set service optionsto all except SourceType, APIType, ParamType
+service all with serviceImpl 
+//microservice * with notification
+
+//microservice * 
+// Set an angular suffix 
+// angularSuffix * with mySuffix

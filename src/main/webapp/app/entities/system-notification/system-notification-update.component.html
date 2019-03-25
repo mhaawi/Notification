@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-system-notification-heading" jhiTranslate="notificationApp.systemNotification.home.createOrEditLabel">Create or edit a System Notification</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!systemNotification.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="systemNotification.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.content" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                        [(ngModel)]="systemNotification.content" required/>
+                    <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.content?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="systemNotification.status" id="field_status"  required>
+                        <option value="READ">{{'notificationApp.StatusType.READ' | translate}}</option>
+                        <option value="UN_READ">{{'notificationApp.StatusType.UN_READ' | translate}}</option>
+                        <option value="NEW">{{'notificationApp.StatusType.NEW' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.sendDate" for="field_sendDate">Send Date</label>
+                    <div class="d-flex">
+                        <input id="field_sendDate" type="datetime-local" class="form-control" name="sendDate" [(ngModel)]="sendDate" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.sourceId" for="field_sourceId">Source Id</label>
+                    <input type="text" class="form-control" name="sourceId" id="field_sourceId"
+                        [(ngModel)]="systemNotification.sourceId" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.sourceType" for="field_sourceType">Source Type</label>
+                    <input type="text" class="form-control" name="sourceType" id="field_sourceType"
+                        [(ngModel)]="systemNotification.sourceType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.sourceName" for="field_sourceName">Source Name</label>
+                    <input type="text" class="form-control" name="sourceName" id="field_sourceName"
+                        [(ngModel)]="systemNotification.sourceName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.applicationKey" for="field_applicationKey">Application Key</label>
+                    <input type="text" class="form-control" name="applicationKey" id="field_applicationKey"
+                        [(ngModel)]="systemNotification.applicationKey" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.error" for="field_error">Error</label>
+                    <input type="text" class="form-control" name="error" id="field_error"
+                        [(ngModel)]="systemNotification.error" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.errorShortName" for="field_errorShortName">Error Short Name</label>
+                    <input type="text" class="form-control" name="errorShortName" id="field_errorShortName"
+                        [(ngModel)]="systemNotification.errorShortName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.errorDate" for="field_errorDate">Error Date</label>
+                    <div class="d-flex">
+                        <input id="field_errorDate" type="datetime-local" class="form-control" name="errorDate" [(ngModel)]="errorDate" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.deleted" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                        [(ngModel)]="systemNotification.deleted" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="notificationApp.systemNotification.deletedDate" for="field_deletedDate">Deleted Date</label>
+                    <div class="d-flex">
+                        <input id="field_deletedDate" type="datetime-local" class="form-control" name="deletedDate" [(ngModel)]="deletedDate" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

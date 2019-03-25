@@ -1,0 +1,10 @@
+{
+    "notificationApp": {
+        "StatusType": {
+            "null": "",
+            "READ": "READ",
+            "UN_READ": "UN_READ",
+            "NEW": "NEW"
+        }
+    }
+}

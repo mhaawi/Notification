@@ -1,0 +1,70 @@
+{
+    "name": "SystemNotification",
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StatusType",
+            "fieldValues": "READ,UN_READ,NEW",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sendDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "sourceId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sourceType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sourceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "applicationKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "error",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "errorShortName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "errorDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "deletedDate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190316120100",
+    "entityTableName": "system_notification",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
